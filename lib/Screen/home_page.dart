@@ -47,14 +47,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // 🟣 APP BAR
       appBar: AppBar(
         title: Text(
           selectionMode ? "${selectedIndexes.length} selected" : "Student Data",
         ),
         centerTitle: true,
-
-        // 🔥 THREE DOT MENU (TOP LEFT)
         leading: PopupMenuButton<String>(
           icon: const Icon(Icons.more_vert),
           onSelected: (value) {
@@ -70,7 +67,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
 
-        // ❌ EXIT SELECTION / LOGOUT
         actions: [
           if (selectionMode)
             IconButton(
@@ -95,7 +91,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
 
-      // ➕ ADD BUTTON (hidden in selection mode)
       floatingActionButton: selectionMode
           ? null
           : FloatingActionButton(
@@ -111,7 +106,6 @@ class _HomePageState extends State<HomePage> {
               },
             ),
 
-      // 🧹 REMOVE BUTTON (only when selecting)
       bottomNavigationBar: selectionMode
           ? SafeArea(
               child: Padding(
@@ -129,8 +123,6 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           : null,
-
-      // 📋 STUDENT LIST
       body: ValueListenableBuilder(
         valueListenable: studentsBox.listenable(),
         builder: (context, Box box, _) {
