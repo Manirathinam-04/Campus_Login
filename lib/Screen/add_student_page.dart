@@ -22,13 +22,11 @@ class _AddStudentPageState extends State<AddStudentPage> {
   void initState() {
     super.initState();
 
-    // If editing existing student
     if (widget.student != null) {
       nameCtrl.text = widget.student!['name'] ?? '';
       rollCtrl.text = widget.student!['roll'] ?? '';
       deptCtrl.text = widget.student!['dept'] ?? '';
 
-      // restore DOB if exists
       if (widget.student!['dob'] != null) {
         selectedDob = DateTime.parse(widget.student!['dob']!);
       }
@@ -47,7 +45,6 @@ class _AddStudentPageState extends State<AddStudentPage> {
           key: _formKey,
           child: Column(
             children: [
-              // NAME
               TextFormField(
                 controller: nameCtrl,
                 validator: (v) => v == null || v.isEmpty ? "Enter name" : null,
@@ -56,7 +53,6 @@ class _AddStudentPageState extends State<AddStudentPage> {
 
               const SizedBox(height: 10),
 
-              // ROLL
               TextFormField(
                 controller: rollCtrl,
                 validator: (v) =>
@@ -66,7 +62,6 @@ class _AddStudentPageState extends State<AddStudentPage> {
 
               const SizedBox(height: 10),
 
-              // DEPARTMENT
               TextFormField(
                 controller: deptCtrl,
                 validator: (v) =>
@@ -76,7 +71,6 @@ class _AddStudentPageState extends State<AddStudentPage> {
 
               const SizedBox(height: 12),
 
-              // DOB PICKER
               InkWell(
                 onTap: () async {
                   DateTime? pickedDate = await showDatePicker(
@@ -107,7 +101,6 @@ class _AddStudentPageState extends State<AddStudentPage> {
 
               const SizedBox(height: 20),
 
-              // SAVE BUTTON ✅ (THIS IS WHAT YOU ASKED ABOUT)
               SizedBox(
                 width: double.infinity,
                 height: 45,
