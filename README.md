@@ -1,4 +1,4 @@
-# campus_log
+# campus_login
 
 A new Flutter project.
 
